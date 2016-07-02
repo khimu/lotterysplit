@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.jws.WebService;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
@@ -38,7 +39,8 @@ import com.share.lottery.service.UserService;
 @Service("userManager")
 @WebService(serviceName = "UserService", endpointInterface = "com.share.lottery.service.UserService")
 public class UserManagerImpl extends GenericManagerImpl<User, Long> implements UserManager, UserService {
-    private PasswordEncoder passwordEncoder;
+	private final static Logger logger = Logger.getLogger(UserManagerImpl.class);
+	private PasswordEncoder passwordEncoder;
     private UserDao userDao;
     
     @Autowired
@@ -334,7 +336,7 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
     
 	@Override
 	public SessionDTO authenticate(String username, String password) {
-		
+		logger.debug("authenticate username " + username + " password ");
 		User user = getUserByUsername(username);
 		
 		/*
@@ -344,9 +346,10 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
 		*/
 		
 		
-
 		// if passwords do not match, throw Invalid Credential Exception
 		if (user == null || passwordEncoder.matches(password, user.getPassword()) == false) {
+			logger.debug("password did not match encoded password " + passwordEncoder.matches(password, user.getPassword()));
+			logger.debug("or user is null");
 			return null;
 		}
 		
@@ -367,12 +370,13 @@ public class UserManagerImpl extends GenericManagerImpl<User, Long> implements U
 			}
 		 }
 		 
+		 logger.debug("returning a session");
 		return new SessionDTO( user.getId(),  user.getEmail(), user.getReferralCode(), false, false);
 	}
 
 	@Override
 	public SessionDTO authenticate(String username) {
-		
+		logger.debug("username is " + username);
 		User user = getUserByUsername(username);
 		
 		
