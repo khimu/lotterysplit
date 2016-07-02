@@ -1,4 +1,7 @@
-var appId=259008874473779;
+/*
+ * set this value in BaseController
+ */
+var appId;
 
 var fbId;
 var userEmail;

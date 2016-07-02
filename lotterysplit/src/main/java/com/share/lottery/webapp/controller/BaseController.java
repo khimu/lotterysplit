@@ -43,13 +43,13 @@ public class BaseController extends BaseFormController {
 	}
 	
 	public void setModel(Map<String, Object> model, String referralCode){
-		model.put("appId", "773778825987127");
+		model.put("appId", "259008874473779");
 		model.put("accessToken", accessToken);
 		model.put("referralCode", referralCode);
 	}
 	
 	public void setModel(Map<String, Object> model){
-		model.put("appId", "773778825987127");
+		model.put("appId", "259008874473779");
 		model.put("accessToken", accessToken);
 	}
 

@@ -73,9 +73,11 @@
 	<logger name="org.springframework">
 		<level value="ERROR" />
 	</logger>
-
+	<logger name="com.share.lottery">
+		<level value="info" />
+	</logger>
 	<root>
-		<priority value="error"></priority>
+		<priority value="info"></priority>
 		<appender-ref ref="fileAppender" />
 		<!--<appender-ref ref="syslog" /> -->
 		<!-- appender-ref ref="mailAppender" / <appender-ref ref="consoleAppender" 

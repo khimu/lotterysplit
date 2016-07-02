@@ -1,0 +1,16 @@
+Project is under /Users/khimung/GOOGLE_API/api/lotterysplit
+
+facebook appId is hardcoded in BaseController and used in common/include.jsp
+common/include.jsp - set the tomcat context name before deploying to new environment.  Otherwise it is "lotto"
+
+The lotterysplit deployed to digitalocean removed all data-ajax.  Don't think anyone has gone beyond the login
+
+org.apache.jasper.JasperException: /WEB-INF/jsp/loginForm.jsp (line: 142, column: 4) Attribute data-ajax invalid for tag form according to TLD
+
+
+java -jar works locally
+
+This will only run on java 7
+
+
+nohup /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java -Dconfig=/etc/lottery/lottery.properties -Djetty.port=9001 -Xmx4096m -Xms1024m -Dlog4j.configuration=/opt/lottery/log4j.xml -jar /opt/lottery/lottery.jar &

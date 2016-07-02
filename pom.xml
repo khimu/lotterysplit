@@ -32,6 +32,7 @@
 
 	<modules>
 		<module>lotterysplit</module>
+		<module>jetty-pkg</module>
 	</modules>
 
 	<repositories>
@@ -315,8 +316,8 @@
             <artifactId>servlet-api</artifactId>
         </exclusion>
         <exclusion>
+         	<groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
-            <groupId>javax.servlet.jsp</groupId>
         </exclusion>
     </exclusions>		
 		</dependency>
@@ -559,7 +560,7 @@
 		<commons.beanutils.version>1.8.3</commons.beanutils.version>
 		<commons.collections.version>3.2.1</commons.collections.version>
 		<commons.lang.version>2.6</commons.lang.version>
-		<log4j.version>1.2.16</log4j.version>
+		<log4j.version>1.2.17</log4j.version>
 		<slf4j.version>1.6.1</slf4j.version>
 
 		<jdbc.groupId>mysql</jdbc.groupId>

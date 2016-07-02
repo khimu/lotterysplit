@@ -1,6 +1,9 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page session="false"%>
 <%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
+
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -9,10 +12,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <%@ taglib uri="http://www.appfuse.org/tags/spring" prefix="appfuse" %>
+
 <%@ taglib prefix="l" uri="/WEB-INF/UtilsTag.tld" %>
 
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<c:set var="ctx" value=""/>
 <c:set var="datePattern"><fmt:message key="date.format"/></c:set>
+
 
 <html lang="en">
 
@@ -26,45 +31,45 @@
 		<meta http-equiv="description" content="Lottery Pool Online, create your public or private lottery ticket pool and we'll pick it up for you">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
-		<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    	<link rel="apple-touch-icon" href="/images/favicon.ico">	
+		<link rel="shortcut icon" href="${ctx}/images/favicon.ico" type="image/x-icon">
+    	<link rel="apple-touch-icon" href="${ctx}/images/favicon.ico">	
 
-		<script src="/js/jquery-1.9.1.min.js"></script>
+		<script src="${ctx}/js/jquery-1.9.1.min.js"></script>
 
-		<script src="/js/jquery-payment.js"></script>
+		<script src="${ctx}/js/jquery-payment.js"></script>
 
-        <link rel="stylesheet" href="/jquery/jquery.mobile-1.3.2.min.css" />
-        <script src="/jquery/jquery.mobile-1.3.2.min.js"></script> 
+        <link rel="stylesheet" href="${ctx}/jquery/jquery.mobile-1.3.2.min.css" />
+        <script src="${ctx}/jquery/jquery.mobile-1.3.2.min.js"></script> 
 
-		<script src="/js/social.js"></script>
+		<script src="${ctx}/js/social.js"></script>
 
 		<!--  required for datepicker -->
 
-    	<link type="text/css" href="/css/jqm-datebox.min.css" rel="stylesheet" /> 
+    	<link type="text/css" href="${ctx}/css/jqm-datebox.min.css" rel="stylesheet" /> 
     	 
-  		<script language="javascript" type="text/javascript" src="/js/jquery.coolfieldset.js"></script>
-		<link rel="stylesheet" type="text/css" href="/css/jquery.coolfieldset.css" />
+  		<script language="javascript" type="text/javascript" src="${ctx}/js/jquery.coolfieldset.js"></script>
+		<link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.coolfieldset.css" />
 		    	 
-    	<script type="text/javascript" src="/js/jqm-datebox.core.min.js"></script>
-		<script type="text/javascript" src="/js/jqm-datebox.mode.calbox.min.js"></script>
+    	<script type="text/javascript" src="${ctx}/js/jqm-datebox.core.min.js"></script>
+		<script type="text/javascript" src="${ctx}/js/jqm-datebox.mode.calbox.min.js"></script>
 
-		<script type="text/javascript" src="/js/jqm-datebox.mode.datebox.min.js"></script>
-  		<script type="text/javascript" src="/js/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+		<script type="text/javascript" src="${ctx}/js/jqm-datebox.mode.datebox.min.js"></script>
+  		<script type="text/javascript" src="${ctx}/js/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 		
-		<link rel="stylesheet" href="/js/jPaginate/css/style.css" />
-	    <script src="/js/jPaginate/jquery.paginate.js" type="text/javascript"></script>	
+		<link rel="stylesheet" href="${ctx}/js/jPaginate/css/style.css" />
+	    <script src="${ctx}/js/jPaginate/jquery.paginate.js" type="text/javascript"></script>	
 	    
-	    <link rel="stylesheet" href="/css/main.css" />
-	    <link rel="stylesheet" href="/css/detail.css" />
+	    <link rel="stylesheet" href="${ctx}/css/main.css" />
+	    <link rel="stylesheet" href="${ctx}/css/detail.css" />
 	    
 	    
-	    <script src="/js/infinite-rotator.js" type="text/javascript"></script>	
+	    <script src="${ctx}/js/infinite-rotator.js" type="text/javascript"></script>	
 
-       <script src="/js/jquery.exif.js"></script>
-       <script src="/js/jquery.canvasResize.js"></script>
-       <script src="/js/canvasResize.js"></script>	 
+       <script src="${ctx}/js/jquery.exif.js"></script>
+       <script src="${ctx}/js/jquery.canvasResize.js"></script>
+       <script src="${ctx}/js/canvasResize.js"></script>	 
        
-       <script src="/js/jquery.openCarousel.js"></script>   
+       <script src="${ctx}/js/jquery.openCarousel.js"></script>   
 	    
        <meta name="viewport" content="width=device-width, initial-scale=1">	
 
@@ -72,12 +77,12 @@
 		
 			@media only screen and (-webkit-min-device-pixel-ratio: 2) {
 				.ui-icon-split {
-					background-image: url("/images/lotterysplit.png");
+					background-image: url("${ctx}/images/lotterysplit.png");
 					background-size: 18px 18px;
 				}
 				
 				.ui-icon-fb {
-					background-image: url("/images/fb_login.jpeg");
+					background-image: url("${ctx}/images/fb_login.jpeg");
 					background-size: 18px 18px;
 				}				
 			}
