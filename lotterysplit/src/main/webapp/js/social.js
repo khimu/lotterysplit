@@ -1,4 +1,4 @@
-var appId;
+var appId=259008874473779;
 
 var fbId;
 var userEmail;
@@ -61,7 +61,8 @@ function facebookReady(){
       appId  : appId,
       status : true,
       cookie : true,
-      xfbml  : true
+      xfbml  : true,
+      version    : 'v2.6'
     });
 
     FB.Event.subscribe('edge.create', function(href, widget) {

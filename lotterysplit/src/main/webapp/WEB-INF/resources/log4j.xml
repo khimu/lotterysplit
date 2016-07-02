@@ -11,7 +11,7 @@
 	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
 		<param name="maxFileSize" value="10MB" />
 		<param name="maxBackupIndex" value="100" />
-		<param name="File" value="./split.log" />
+		<param name="File" value="/opt/lottery/logs/lottery.log" />
 		<param name="threshold" value="info" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern"

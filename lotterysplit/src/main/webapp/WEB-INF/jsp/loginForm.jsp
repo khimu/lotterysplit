@@ -109,20 +109,10 @@
 			        	<div style="clear:both"></div>
 			        	<br/>
 </c:if>
-<div class="form-signin" id="megaMillionWinningId"></div>			
-<div class="form-signin" style="text-align:center"><a href="http://goo.gl/tkw3Sk">try google apps for businesses</a></div>	
-<div class="form-signin" id="powerballWinningId"></div>	
 
-<div class="form-signin" id="rotating-item-wrapper" style="height:200px;overflow:hidden;">
- <img class="rotating-item" src="/images/group.png" alt="create private lottery pool groups" />
- <img class="rotating-item" src="/images/free.png" alt="free weekly lottery pool" />
- <img class="rotating-item" src="/images/reward.png" alt="get rewarded for referrals and facebook likes" />
-</div>
 
-<a data-ajax="false" href="#freelotteryPoolId" data-role="button" style="text-shadow: -2px 2px 3px #9CBA7F;color:black;background: transparent; border: none !important;">Free Lottery Pool</a>
-<a data-ajax="false" href="#cashRewardId" data-role="button" style="text-shadow: -2px 2px 3px #9CBA7F;color:black;background: transparent; border: none !important;">$100.00 referral cash reward</a>
-<a data-ajax="false" href="#lotteryPoolCampaignId" data-role="button" style="text-shadow: -2px 2px 3px #9CBA7F;color:black;background: transparent; border: none !important;">Lottery Pool Campaign</a>
-<a data-ajax="false" href="#fbLikeCreditId" data-role="button" style="text-shadow: -2px 2px 3px #9CBA7F;color:black;background: transparent; border: none !important;">Facebook Like $1.00 Credit</a>
+
+
 	
 					<br/>		
 					
@@ -174,7 +164,7 @@
                 
 
                 			<div style="clear:both"></div>	
-               
+               <!--
 				<div class="form-signin">
 					<div class="priceing-tabel1 priceing-tabel1-blue">
 						<div class="priceing-header">
@@ -348,7 +338,7 @@
 							<div class="fb-like" data-href="http://www.splitlottery.com" data-layout="button_count" data-action="like" data-show-faces="true"  data-share="true" ></div>          
 						</a>
 					</div>
-					
+					-->
 				</div>
 				<div style="clear:both"></div>
 						

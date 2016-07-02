@@ -186,19 +186,19 @@
 
 			<properties>
 				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
-
-				<db.name>splitlottery</db.name>
-				<jdbc.url>jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/${db.name}</jdbc.url>
-
-				<jdbc.username>adminhvQCD3n</jdbc.username>
-				<jdbc.password>hrweYdksh5AB</jdbc.password>
+		
+				<db.name>sharelottery</db.name>
+				<jdbc.url>jdbc:mysql://localhost:3306/${db.name}</jdbc.url>
+		
+                <jdbc.username>splitlottery</jdbc.username>
+                <jdbc.password>splitlottery8787</jdbc.password>
 
 				<jdbc.maxPoolSize>50</jdbc.maxPoolSize>
 				<jdbc.minPoolSize>10</jdbc.minPoolSize>
 				<jdbc.maxStatements>100</jdbc.maxStatements>
 				<jdbc.testConnection>true</jdbc.testConnection>
 
-				<mongo.server.host.one>127.2.174.130</mongo.server.host.one>
+				<mongo.server.host.one>127.0.0.1</mongo.server.host.one>
 				<mongo.server.port.one>27017</mongo.server.port.one>
 				<!-- <mongo.server.host.two>mongoB</mongo.server.host.two> <mongo.server.port.two>27017</mongo.server.port.two> 
 					<mongo.server.host.three>mongoC</mongo.server.host.three> <mongo.server.port.three>27017</mongo.server.port.three> -->
