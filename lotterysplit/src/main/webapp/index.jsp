@@ -5,4 +5,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fn" uri="/WEB-INF/tld/fn.tld"%>
 
-<c:redirect url="http://107.170.234.144:8080/lotto/lottery/login.htm"/>
+<c:redirect url="http://107.170.234.144:9001/lottery/login.htm"/>
