@@ -32,7 +32,7 @@
 
 	<modules>
 		<module>lotterysplit</module>
-		<module>jetty-pkg</module>
+		<!--<module>jetty-pkg</module>-->
 	</modules>
 
 	<repositories>
