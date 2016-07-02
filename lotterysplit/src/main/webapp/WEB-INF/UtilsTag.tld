@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE taglib PUBLIC 
+                 "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+                 "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>Utils</short-name>
+  <description>Utils Tag</description>
+
+  <tag>
+    <name>day</name>
+    <tag-class>com.share.lottery.webapp.taglib.DayTag</tag-class>\
+    <attribute>
+      <name>date</name>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <tag>
+    <name>month</name>
+    <tag-class>com.share.lottery.webapp.taglib.MonthTag</tag-class>
+    <attribute>
+      <name>date</name>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>  
+  <tag>
+    <name>year</name>
+    <tag-class>com.share.lottery.webapp.taglib.YearTag</tag-class>
+    <attribute>
+      <name>date</name>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>  
+
+</taglib>

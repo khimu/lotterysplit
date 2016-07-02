@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.lottery.split</groupId>
+		<artifactId>com.lottery.split</artifactId>
+		<version>1.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<artifactId>lotterysplit</artifactId>
+	<packaging>war</packaging>
+	<name>lotterysplit</name>
+	<url>http://maven.apache.org</url>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>lotterysplit</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+				<configuration>
+					<contextPath>/</contextPath>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>9090</port>
+						</connector>
+					</connectors>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
+			</testResource>
+			<testResource>
+				<directory>src/main/webapp/WEB-INF</directory>
+				<filtering>true</filtering>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>cubtrails-nexus</id>
+			<url>https://www.cubtrails.com/nexus/content/repositories/martytime</url>
+		</repository>
+		<repository>
+			<id>repository.springframework.maven.milestone</id>
+			<name>Spring Framework Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.java-persistence</groupId>
+			<artifactId>jpa-api</artifactId>
+			<version>${jpa.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search</artifactId>
+			<version>${hibernate.search.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hibernate-core</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-analyzers</artifactId>
+			<version>${hibernate.search.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.authorize</groupId>
+			<artifactId>anet-java-sdk</artifactId>
+			<version>1.4.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>${velocity.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.0.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.paypal.sdk</groupId>
+			<artifactId>rest-api-sdk</artifactId>
+			<version>0.7.1</version>
+		</dependency>
+
+<!-- 
+		<dependency>
+			<groupId>net.spy</groupId>
+			<artifactId>spymemcached</artifactId>
+			<version>2.10.6</version>
+		</dependency>
+ -->
+ 
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sendgrid</groupId>
+			<artifactId>sendgrid-java</artifactId>
+			<version>0.1.2</version>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<!-- ================= Settings Profile ================= -->
+		<profile>
+			<id>prod</id>
+
+			<properties>
+				<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+
+				<db.name>splitlottery</db.name>
+				<jdbc.url>jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/${db.name}</jdbc.url>
+
+				<jdbc.username>adminhvQCD3n</jdbc.username>
+				<jdbc.password>hrweYdksh5AB</jdbc.password>
+
+				<jdbc.maxPoolSize>50</jdbc.maxPoolSize>
+				<jdbc.minPoolSize>10</jdbc.minPoolSize>
+				<jdbc.maxStatements>100</jdbc.maxStatements>
+				<jdbc.testConnection>true</jdbc.testConnection>
+
+				<mongo.server.host.one>127.2.174.130</mongo.server.host.one>
+				<mongo.server.port.one>27017</mongo.server.port.one>
+				<!-- <mongo.server.host.two>mongoB</mongo.server.host.two> <mongo.server.port.two>27017</mongo.server.port.two> 
+					<mongo.server.host.three>mongoC</mongo.server.host.three> <mongo.server.port.three>27017</mongo.server.port.three> -->
+
+				<memcache.server>localhost:11211</memcache.server>
+			</properties>
+		</profile>
+
+	</profiles>
+
+	<properties>
+		<jsp.version>2.2</jsp.version>
+		<jstl.version>1.2</jstl.version>
+
+		<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+
+		<db.name>sharelottery</db.name>
+		<jdbc.url>jdbc:mysql://localhost:3306/${db.name}</jdbc.url>
+
+		<jdbc.username>root</jdbc.username>
+		<jdbc.password>root</jdbc.password>
+
+		<jdbc.maxPoolSize>25</jdbc.maxPoolSize>
+		<jdbc.minPoolSize>10</jdbc.minPoolSize>
+		<jdbc.maxStatements>100</jdbc.maxStatements>
+		<jdbc.testConnection>true</jdbc.testConnection>
+
+		<mongo.server.host.one>mongoA</mongo.server.host.one>
+		<mongo.server.port.one>27017</mongo.server.port.one>
+		<!-- <mongo.server.host.two>mongoB</mongo.server.host.two> <mongo.server.port.two>27017</mongo.server.port.two> 
+			<mongo.server.host.three>mongoC</mongo.server.host.three> <mongo.server.port.three>27017</mongo.server.port.three> -->
+
+		<memcache.server>memcache:11211</memcache.server>
+
+		<spring.security.version>3.2.0.RELEASE</spring.security.version>
+		<hibernate.search.version>4.1.1.Final</hibernate.search.version>
+		<jpa.version>2.0-cr-1</jpa.version>
+	</properties>
+</project>

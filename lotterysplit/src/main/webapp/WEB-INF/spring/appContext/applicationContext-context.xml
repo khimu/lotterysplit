@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        				http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        				http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+						http://www.directwebremoting.org/schema/spring-dwr
+    					http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd
+        				http://www.springframework.org/schema/context
+        				http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        				http://www.springframework.org/schema/security
+        				http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+  <!-- <import resource="classpath*:/applicationContextService.xml"/> -->
+        <!--
+        <bean id="constants" class="java.lang.String">
+                <constructor-arg index="0" type="java.lang.String" value="${constants}" />
+        </bean>  
+          -->
+  
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="ApplicationResources"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean> 
+ 
+    <aop:aspectj-autoproxy />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:mail.properties</value>
+				<value>classpath:memcache.properties</value>
+				<value>classpath:mongo.properties</value>
+				<value>classpath:splitlottery.properties</value>
+			</list>
+		</property>
+	</bean>
+<!-- 
+    <bean name="defaultMemcachedClient" class="com.google.code.ssm.CacheFactory">
+          <property name="cacheClientFactory">
+                <bean class="com.google.code.ssm.providers.xmemcached.MemcacheClientFactoryImpl" />
+          </property>
+          <property name="addressProvider">
+                <bean class="com.google.code.ssm.config.DefaultAddressProvider">
+                     <property name="address" value="${memcache.server.address}" />
+                </bean>
+          </property>
+          <property name="configuration">
+                <bean class="com.google.code.ssm.providers.CacheConfiguration">
+                      <property name="consistentHashing" value="true" />
+                </bean>
+          </property>
+     </bean>
+ -->
+        <bean id="accessToken" class="java.lang.String">
+                <constructor-arg index="0" value="${access.token}" />
+        </bean>	
+	
+    <!--  
+
+        <bean id="apiLoginId" class="java.lang.String">
+                <constructor-arg index="0" value="${apiLoginId}" />
+        </bean>
+
+        <bean id="transactionKey" class="java.lang.String">
+                <constructor-arg index="0" value="${transactionKey}" />
+        </bean> 
+
+        <bean id="relayResponseUrl" class="java.lang.String">
+                <constructor-arg index="0" value="${relayResponseUrl}" />
+        </bean>         
+        
+        <bean  id="receiptPageUrl" class="java.lang.String">
+                <constructor-arg index="0" value="${receiptPageUrl}" />
+        </bean>
+        
+        <bean id="authorizeNetUrl" class="java.lang.String">
+                <constructor-arg index="0" value="${authorize.net.url}"/>
+        </bean>
+	 -->	
+</beans>

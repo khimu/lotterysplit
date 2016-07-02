@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd" default-autowire="byName">
+
+	<aop:aspectj-autoproxy />
+
+  	<bean id="db"
+		class="com.share.lottery.mongo.manager.CounterDBFactoryBean">
+		<property name="mongo" ref="mongo" />
+		<property name="name" value="splitlottery" />
+	</bean>
+<!-- 	
+  	<bean id="emailDB"
+		class="com.share.lottery.mongo.manager.CounterDBFactoryBean">
+		<property name="mongo" ref="mongo" />
+		<property name="name" value="emailDB" />
+	</bean>
+	
+  	<bean id="transactionDB"
+		class="com.share.lottery.mongo.manager.CounterDBFactoryBean">
+		<property name="mongo" ref="mongo" />
+		<property name="name" value="transactionDB" />
+	</bean>
+	
+  	<bean id="groupDB"
+		class="com.share.lottery.mongo.manager.CounterDBFactoryBean">
+		<property name="mongo" ref="mongo" />
+		<property name="name" value="groupDB" />
+	</bean>	
+
+  	<bean id="campaignDB"
+		class="com.share.lottery.mongo.manager.CounterDBFactoryBean">
+		<property name="mongo" ref="mongo" />
+		<property name="name" value="campaignDB" />
+	</bean>		
+ -->
+	<bean id="emailMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="db" />
+		<constructor-arg index="1" value="emails" />
+	</bean>	
+	
+	<bean id="campaignMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="db" />
+		<constructor-arg index="1" value="campaign" />
+	</bean>	
+	
+	<bean id="groupLotteryMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="db" />
+		<constructor-arg index="1" value="group_lottery" />
+	</bean>	
+	
+	<bean id="balanceSheetMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="db" />
+		<constructor-arg index="1" value="account_activities" />	
+	</bean>
+	
+	<!--  funded with real cash from credit card, bank account, or paypal -->
+	<!-- 
+	<bean id="paymentMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="transactionDB" />
+		<constructor-arg index="1" value="payments" />
+	</bean>		
+	
+	<bean id="imageMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="transactionDB" />
+		<constructor-arg index="1" value="lottery_tickets" />
+	</bean>		
+
+	<bean id="transactionMongoManager" class="com.share.lottery.mongo.manager.MongoManager">
+		<constructor-arg index="0" ref="transactionDB" />
+		<constructor-arg index="1" value="transactions" />
+	</bean>		
+	 -->	
+
+	<bean id="mongo" class="com.mongodb.Mongo">
+		<constructor-arg index="0">
+			<list value-type="com.mongodb.ServerAddress">
+				<bean class="com.mongodb.ServerAddress">
+					<constructor-arg index="0" value="${mongo.server.host.one}" />
+					<constructor-arg index="1" value="${mongo.server.port.one}" />
+				</bean>
+				<!-- 
+				<bean class="com.mongodb.ServerAddress">
+					<constructor-arg index="0" value="${mongo.server.host.two}" />
+					<constructor-arg index="1" value="${mongo.server.port.two}" />
+				</bean>
+				<bean class="com.mongodb.ServerAddress">
+					<constructor-arg index="0" value="${mongo.server.host.three}" />
+					<constructor-arg index="1" value="${mongo.server.port.three}" />
+				</bean>
+				 -->
+			</list>
+		</constructor-arg>
+		<constructor-arg index="1">
+		   <bean class="com.share.lottery.util.MongoOptionsBean">
+		    	<property name="connectionsPerHost" value="30"/>
+		    	<property name="threadsAllowedToBlockForConnectionMultiplier" value="10"/>
+		   </bean>
+ 		</constructor-arg>
+	</bean>
+ 
+	<context:component-scan base-package="com.share.lottery.mongo.manager"></context:component-scan>
+
+</beans>

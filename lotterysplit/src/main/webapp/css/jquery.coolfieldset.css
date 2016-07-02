@@ -1,0 +1,28 @@
+.coolfieldset, .coolfieldset.expanded{
+	border:1px solid #aaa;   
+}
+
+.coolfieldset.collapsed{
+	border:0;
+	border-top:1px solid #aaa;
+}
+
+.coolfieldset legend{
+	padding-left:13px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.coolfieldset legend, .coolfieldset.expanded legend{
+	background: transparent url(../images/btn_viewchart.png) no-repeat center left;
+}
+
+.coolfieldset.collapsed legend{
+	background: transparent url(../images/btn_viewchart_text.png) no-repeat center left;
+}
+
+.chart {
+  padding:20px;
+  margin:30px;
+  text-align:center;
+}
